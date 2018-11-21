@@ -9,9 +9,9 @@
       </div>
       <div class="right">
         <button v-if="isLoggedIn">Post Item</button>
-        <img v-if="isLoggedIn" class="user-image" :src="user.image">
+        <img v-if="isLoggedIn" class="user-image" @click="showDropDown = !showDropDown" :src="user.image">
+        <button v-if="isLoggedIn" @click="logout()">Logout</button>
         <button v-if="!isLoggedIn" @click='login()'>Login</button>
-        <!-- <button @click='logout()'>Logout</button> -->
       </div>  
     </div>
   </div>
@@ -24,6 +24,11 @@ export default {
   name: 'HeaderComponent',
   computed: mapState('auth', ['user', 'isLoggedIn']),
   methods: mapActions('auth', ['login', 'logout']),
+  data:() => {
+    return {
+      showDropDown: false
+    }
+  }
 };
 </script>
 
@@ -65,6 +70,7 @@ export default {
     align-items: center;
 }
 .user-image {
+  z-index: 100;
   height: 2em;
   width: auto;
   -webkit-clip-path: circle(50% at 50% 50%);
@@ -95,6 +101,11 @@ button:hover {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
 }
 
 </style>

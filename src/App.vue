@@ -1,6 +1,7 @@
   <template>
   <div class="app">
     <header-component></header-component>
+    <grid-component></grid-component>
   </div>
 </template>
 
@@ -8,13 +9,15 @@
 // @ is an alias to /src
 import { mapActions, mapState } from 'vuex';
 import HeaderComponent from './components/Header.vue';
+import GridComponent from './components/TileGrid.vue'
 
 export default {
   name: 'app',
   computed: mapState('auth', ['user', 'isLoggedIn']),
   methods: mapActions('auth', ['login', 'logout']),
   components: { 
-    HeaderComponent
+    'header-component': HeaderComponent,
+    'grid-component': GridComponent
   },
 };
 </script>
@@ -23,8 +26,5 @@ body {
   margin: 0px;
   padding: 0px;
 }
-header-component {
-  width: 100%;
-  height: 50px;
-}
+
 </style>
