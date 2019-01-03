@@ -1,11 +1,11 @@
 <template>
     <div class="item-grid">
         <tile-component 
-            v-for="item in items" 
-            :title="item.title"
-            :price="item.price"
-            :sellerName="item.sellerName"
-            :photoURL="item.photoURL">
+            v-for="product in products" 
+            :title="product.title"
+            :price="product.price"
+            :sellerName="product.sellerName"
+            :photoURL="product.photoURL">
         </tile-component>
     </div>
 </template>
@@ -13,24 +13,22 @@
 <script>
 // @ is an alias to /src
 import TileComponent from './Tile.vue'
+import { mapActions, mapState } from 'vuex';
+
 export default {
   name: 'GridComponent',
   data:() => {
     return {
-        items: [
-            {title: 'Test', price: '43', sellerName: 'Mac', photoURL:'https://images.finishline.com/is/image/FinishLine/410453A_014_P1?$Main_gray$'},
-            {title: 'Test2', price: '30', sellerName: 'Logan', photoURL:'https://images.finishline.com/is/image/FinishLine/410453A_014_P1?$Main_gray$'},
-            {title: 'Test', price: '43', sellerName: 'Mac', photoURL:'https://images.finishline.com/is/image/FinishLine/410453A_014_P1?$Main_gray$'},
-            {title: 'Test2', price: '30', sellerName: 'Logan', photoURL:'https://images.finishline.com/is/image/FinishLine/410453A_014_P1?$Main_gray$'},
-            {title: 'Test', price: '43', sellerName: 'Mac', photoURL:'https://images.finishline.com/is/image/FinishLine/410453A_014_P1?$Main_gray$'},
-            {title: 'Test2', price: '30', sellerName: 'Logan', photoURL:'https://images.finishline.com/is/image/FinishLine/410453A_014_P1?$Main_gray$'}
-        
-        ]
     }
+  },
+  mounted() {
+      this.init();
   },
   components: {
       'tile-component': TileComponent
   },
+  computed: mapState('products', ['products']),
+  methods: mapActions('products', ['init']),
 };
 </script>
 

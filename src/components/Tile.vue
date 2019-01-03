@@ -33,6 +33,7 @@ export default {
         background-color: white;
         border-radius: 15px;
         box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.25);
+        padding: 1em;
     }
     .title {
         padding-top: 10px;

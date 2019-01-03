@@ -10,6 +10,11 @@
       <div class="right">
         <button v-if="isLoggedIn">Post Item</button>
         <img v-if="isLoggedIn" class="user-image" @click="showDropDown = !showDropDown" :src="user.image">
+        <div v-if='showDropDown'>
+          <ul class='drop_menu'>
+            <a><button v-if="isLoggedIn" @click="logout()">Logout</button></a>
+          </ul>
+        </div>
         <button v-if="isLoggedIn" @click="logout()">Logout</button>
         <button v-if="!isLoggedIn" @click='login()'>Login</button>
       </div>  
